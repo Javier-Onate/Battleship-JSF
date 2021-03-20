@@ -1,0 +1,78 @@
+@charset "ISO-8859-1";
+
+.navbar {
+    height: 10vh;
+    background-color: lightgrey;
+    box-shadow: 3px 1px 5px 0px rgba(0,0,0,0.75);
+    display: flex; 
+    background-image: linear-gradient(-225deg, #000BB8 0%, #054f6e 51%, #4A55F0 100%);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.navbutton {
+    margin:auto!important; 
+}
+
+.buttonwrapper {
+    height : 90vh;
+    text-align: center;
+    position: relative;
+    background-image: linear-gradient(to top, #0C147A 0%, #ffffff 100%, #70B3E0 100%, #ffffff 100%);
+}
+.buttonwrapper::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    background-image: url("#{resource['images/img-bn3.jpg']}");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.buttondiv {
+    height: 10%!important;
+    justify-content: auto;
+}
+
+.homebutton {
+    margin: 5rem!important;
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+    padding-left: 10rem!important;
+    padding-right: 10rem!important;
+}
+@font-face {
+    font-family: "horror";
+    src: url("../../../assets/Font/Insomnia1.ttf") format("woff2");
+   }
+.hometitle { 
+    color: #111; 
+    font-family: "horror";
+    font-size: 5rem; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+    margin-top: 2px;
+    padding-top: 10rem;
+    position: relative;
+    text-shadow: 1px 3px 0 #0c3483, 1px 5px 5px;
+}
