@@ -1,5 +1,13 @@
 @charset "ISO-8859-1";
 
+html {
+  height: 100%;
+}
+body {
+  margin:0;
+  padding:0;
+}
+/* Style of navbar : START */
 .navbar {
     height: 10vh;
     background-color: lightgrey;
@@ -8,6 +16,7 @@
     background-image: linear-gradient(-225deg, #000BB8 0%, #054f6e 51%, #4A55F0 100%);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
+    opacity:1;
 }
 
 @keyframes gradient {
@@ -25,7 +34,9 @@
 .navbutton {
     margin:auto!important; 
 }
+/* Style of navbar : END */
 
+/* Style of home buttons and background : START */
 .buttonwrapper {
     height : 90vh;
     text-align: center;
@@ -61,7 +72,7 @@
 }
 @font-face {
     font-family: "horror";
-    src: url("../../../assets/Font/Insomnia1.ttf") format("woff2");
+    src: url("#{resource['font/Insomnia1.ttf']}") format("woff2");
    }
 .hometitle { 
     color: #111; 
@@ -76,3 +87,4 @@
     position: relative;
     text-shadow: 1px 3px 0 #0c3483, 1px 5px 5px;
 }
+/* Style of home buttons and background : END */

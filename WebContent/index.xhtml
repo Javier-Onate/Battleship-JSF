@@ -6,33 +6,38 @@
 
 <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
 	<h:head>
+		<title>Battleship/home</title>
 		<h:outputStylesheet library="css" name="indexstyle.css" />
 	</h:head>
 	<h:body>
+		<!-- Navigation bar : START -->
 		<div class="navbar">
-			<p:commandButton type="button" value="Information"
+			<p:commandButton type="button" value="Informations"
 				styleClass="ui-button-raised ui-button-secondary navbutton" />
-			<p:commandButton type="button" value="Inscription"
-				styleClass="ui-button-raised ui-button-secondary navbutton" />
-			<p:commandButton type="button" value="Connexion"
-				styleClass="ui-button-raised ui-button-secondary navbutton" />
+			<a href="register.xhtml" class="navbutton"><p:commandButton type="button" value="Register"
+				styleClass="ui-button-raised ui-button-secondary" /></a>
+			<a href="login.xhtml" class="navbutton"><p:commandButton type="button" value="Login"
+				styleClass="ui-button-raised ui-button-secondary" /></a>
 		</div>
+		<!-- Navigation bar : END -->
 
+		<!-- Main buttons on home menu : START -->
 		<div class="buttonwrapper">
-			<h2 class="hometitle">Bienvenue sur les batailles navales</h2>
+			<h2 class="hometitle">Welcome to the Battleships</h2>
 			<div class="buttondiv">
-				<p:commandButton type="button" value="Inscription"
-				styleClass="ui-button-raised ui-button-secondary homebutton" />
+				<a href="register.xhtml" class=""><p:commandButton type="button" value="Register"
+				styleClass="ui-button-raised ui-button-secondary homebutton" /></a>
 			</div>
 			<div class="buttondiv">
-				<p:commandButton type="button" value="Connexion"
-				styleClass="ui-button-raised ui-button-secondary homebutton" />
+				<a href="login.xhtml" class=""><p:commandButton type="button" value="Login"
+				styleClass="ui-button-raised ui-button-secondary homebutton" /></a>
 			</div>
 			<div class="buttondiv">
-				<p:commandButton type="button" value="Information"
+				<p:commandButton type="button" value="Informations"
 				styleClass="ui-button-raised ui-button-secondary homebutton" />
 			</div>
 		</div>
+		<!-- Main buttons on home menu : END -->
 	</h:body>
 </f:view>
 
