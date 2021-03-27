@@ -37,6 +37,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
 		webResource = client.resource(URL);
 		String jsonutilisateur = g.toJson(u);
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, jsonutilisateur);
+		System.out.println("coucou");
 		if(response.getStatus() == 200) {
 			String jsonstring = response.getEntity(String.class);
 			Utilisateur u1 =g.fromJson(jsonstring, new TypeToken<Utilisateur>(){}.getType());

@@ -60,20 +60,20 @@ public class utilisateurController {
 	}	
 	
 	public String register() {
-		Utilisateur u1 = s.login(u);
+		Utilisateur u1 = s.register(u);
 		
 		if(u1 == null) {
 			System.out.println(s.getMessage());
 			session.setAttribute("messageErreurConnexion", s.getMessage());
 
-			return "login";
+			return "register";
 		}
 		else {
 			session.setAttribute("user", u1);
 			Utilisateur u2 = (Utilisateur) session.getAttribute("user");
 			session.setAttribute("messageErreurConnexion", "");
 
-			return "login";
+			return "register";
 		}		
 	}	
 }

@@ -15,10 +15,12 @@
 		<div class="navbar">
 			<p:commandButton type="button" value="Informations"
 				styleClass="ui-button-raised ui-button-secondary navbutton" />
-			<a href="register.xhtml" class="navbutton"><p:commandButton type="button" value="Register"
-				styleClass="ui-button-raised ui-button-secondary" /></a>
-			<a href="login.xhtml" class="navbutton"><p:commandButton type="button" value="Login"
-				styleClass="ui-button-raised ui-button-secondary" /></a>
+			<a href="register.xhtml" class="navbutton"><p:commandButton
+					type="button" value="Register"
+					styleClass="ui-button-raised ui-button-secondary" /></a> <a
+				href="login.xhtml" class="navbutton"><p:commandButton
+					type="button" value="Login"
+					styleClass="ui-button-raised ui-button-secondary" /></a>
 		</div>
 		<!-- Navigation bar : END -->
 
@@ -26,24 +28,36 @@
 		<div class="login-box">
 			<h2>Login</h2>
 			<h:form>
+				<h:message for="email" styleClass="errormessages"></h:message>
 				<div class="user-box ">
 					<p:outputLabel for="email" styleClass="label">Email</p:outputLabel>
 					<h:inputText id="email" styleClass="input"
-						value="#{utilisateurBean.u.email}" p:placeholder="Email" required="true" >
-					<f:validateRegex
-						pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+						value="#{utilisateurBean.u.email}" p:placeholder="Email"
+						required="true"
+						requiredMessage="La saisie de l'email est obligatoire"
+						validatorMessage="Votre email est invalide">
+						<f:validateRegex
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
 					</h:inputText>
 				</div>
+				<h:message for="password" styleClass="errormessages"></h:message>
 				<div class="user-box ">
 					<p:outputLabel for="password" styleClass="label">Password</p:outputLabel>
 					<h:inputSecret id="password" value="#{utilisateurBean.u.password}"
 						redisplay="true" required="true"
-						styleClass="input" >
+						requiredMessage="La saisie du mot de passe est obligatoire"
+						validatorMessage="Votre mot de passe doit contenir au moins 8 caractères"
+						styleClass="input">
+						<f:validateLength minimum="8"></f:validateLength>
 					</h:inputSecret>
 				</div>
-				<p:commandButton ajax="false" action="#{utilisateurBean.login}" value="Login"
-					styleClass="ui-button-raised ui-button-secondary navbutton" />
-				<h:outputText value="#{utilisateurBean.s.message}"></h:outputText> 
+				<div>
+					<p:commandButton ajax="false" action="#{utilisateurBean.login}"
+						value="Login"
+						styleClass="ui-button-raised ui-button-secondary navbutton" />
+				</div>
+				<h:outputText value="#{utilisateurBean.s.message}"
+					styleClass="errormessages"></h:outputText>
 			</h:form>
 		</div>
 		<!-- Login form : END -->
