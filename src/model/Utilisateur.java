@@ -1,7 +1,7 @@
 package model;
 
 
-
+// Ici on créé une classe utilisateur afin de pouvoir manipuler l'objet utilisateur à travers le projet
 public class Utilisateur {
 
 	private int id;

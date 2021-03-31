@@ -1,0 +1,13 @@
+<!-- <c:if test="#{not empty menuserBean.u.email]">
+								<p>C'est votre tour</p>
+							</c:if> -->
+
+<c:choose>
+							<c:when test="#{menuserBean.u.email == d.tourJoueur}">
+								<p>#{menuserBean.u.email} == #{d.tourJoueur}</p>
+								<p>#{menuserBean.u.email == d.tourJoueur}</p>
+							</c:when>
+							<c:otherwise>
+								<p>some.test is not true</p>
+							</c:otherwise>
+						</c:choose>

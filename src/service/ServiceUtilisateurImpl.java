@@ -16,7 +16,7 @@ public class ServiceUtilisateurImpl implements ServiceUtilisateur {
 	private String message;
 	private Client client = null;
 	private Gson g = null ;
-	WebResource webResource = null;
+	private WebResource webResource = null;
 
 	public String getMessage() {
 		return message;

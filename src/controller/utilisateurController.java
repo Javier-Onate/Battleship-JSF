@@ -10,6 +10,7 @@ import service.ServiceUtilisateur;
 import service.ServiceUtilisateurImpl;
 import service.SessionUtils;
 
+// Ici nous avons le bean ou controller qui fera le lien avec le JSF pour la manipulation de l'utilisateur
 @ManagedBean (name="utilisateurBean")
 public class utilisateurController {
 
@@ -41,6 +42,8 @@ public class utilisateurController {
 		return s;
 	}
 
+	// On fait appel au login de l'implemantation service et on retourne le message d'erreur et/ou la page que l'on veut
+	// On stock aussi les données de la session dans le stockage coté client pour ne pas utiliser @SessionScope
 	public String login() {
 		Utilisateur u1 = s.login(u);
 		
@@ -55,7 +58,7 @@ public class utilisateurController {
 			Utilisateur u2 = (Utilisateur) session.getAttribute("user");
 			session.setAttribute("messageErreurConnexion", "");
 
-			return "login";
+			return "menuser";
 		}		
 	}	
 	
@@ -73,7 +76,7 @@ public class utilisateurController {
 			Utilisateur u2 = (Utilisateur) session.getAttribute("user");
 			session.setAttribute("messageErreurConnexion", "");
 
-			return "register";
+			return "menuser";
 		}		
 	}	
 }

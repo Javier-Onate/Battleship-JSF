@@ -6,7 +6,7 @@
 
 <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
 	<h:head>
-		<title>Battleship/utilisateur</title>
+		<title>Battleship/login</title>
 		<h:outputStylesheet library="css" name="primeflex.min.css" />
 		<h:outputStylesheet library="css" name="loginstyle.css" />
 	</h:head>
@@ -26,28 +26,8 @@
 
 		<!-- Login form : START -->
 		<div class="login-box">
-			<h2>Register</h2>
+			<h2>Login</h2>
 			<h:form>
-			<h:message for="prenom" styleClass="errormessages"></h:message>
-				<div class="user-box ">				
-					<p:outputLabel for="prenom" styleClass="label">Prenom</p:outputLabel>
-					
-					<h:inputText id="prenom" styleClass="input"
-						value="#{utilisateurBean.u.prenom}" p:placeholder="prenom"
-						required="true"
-						requiredMessage="La saisie du prenom est obligatoire">						
-					</h:inputText>					
-				</div>
-				
-				<h:message for="nom" styleClass="errormessages"></h:message>
-				<div class="user-box ">
-					<p:outputLabel for="nom" styleClass="label">Nom</p:outputLabel>
-					<h:inputText id="nom" styleClass="input"
-						value="#{utilisateurBean.u.nom}" p:placeholder="nom"
-						required="true" requiredMessage="La saisie du nom est obligatoire">						
-					</h:inputText>					
-				</div>
-				
 				<h:message for="email" styleClass="errormessages"></h:message>
 				<div class="user-box ">
 					<p:outputLabel for="email" styleClass="label">Email</p:outputLabel>
@@ -57,10 +37,9 @@
 						requiredMessage="La saisie de l'email est obligatoire"
 						validatorMessage="Votre email est invalide">
 						<f:validateRegex
-							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />						
-					</h:inputText>					
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</h:inputText>
 				</div>
-				
 				<h:message for="password" styleClass="errormessages"></h:message>
 				<div class="user-box ">
 					<p:outputLabel for="password" styleClass="label">Password</p:outputLabel>
@@ -69,12 +48,12 @@
 						requiredMessage="La saisie du mot de passe est obligatoire"
 						validatorMessage="Votre mot de passe doit contenir au moins 8 caractères"
 						styleClass="input">
-						<f:validateLength minimum="8"></f:validateLength>						
+						<f:validateLength minimum="8"></f:validateLength>
 					</h:inputSecret>
 				</div>
 				<div>
-					<p:commandButton action="#{utilisateurBean.register}" ajax="false"
-						value="Register"
+					<p:commandButton ajax="false" action="#{utilisateurBean.login}"
+						value="Login"
 						styleClass="ui-button-raised ui-button-secondary navbutton" />
 				</div>
 				<h:outputText value="#{utilisateurBean.s.message}"
