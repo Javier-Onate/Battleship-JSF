@@ -1,0 +1,94 @@
+@charset "ISO-8859-1";
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: linear-gradient(#141e30, #243b55);
+	height:100vh;
+}
+
+.container {
+	height:100%;
+}
+.card {
+	width: 600px;
+	height: 600px;
+	box-shadow: 3px 3px 3px black, 0px 0px 0px 10px white;
+}
+
+
+.bateau {
+	background-color: white;
+	box-shadow: 0px 0px 0px 1px red;
+}
+
+#porte-avion {
+	width: 300px;
+}
+
+#croiseur {
+	width: 240px;
+}
+
+#torpilleur {
+	width: 180px;
+}
+
+#sous-marin {
+	width: 180px;
+}
+
+#contre-torpilleur {
+	width: 120px;
+}
+
+.ui-panel-titlebar {
+	display: none;
+}
+
+.ui-panel-content {
+	height: 60px !important;
+	border-radius: 0 !important;
+	border: 0 !important;
+	padding: 0 !important;
+	background: none !important;
+}
+
+#droppable {
+	z-index: -9999;
+	width: 600px;
+	height: 600px;
+	position: fixed;
+	opacity: 0;
+}
+
+.button-form {
+	padding: 1rem;
+}
+
+.errormessages {
+	padding: 10px 0;
+	font-size: 12px;
+	margin-bottom: 16px;
+	box-sizing: border-box;
+	outline: none;
+	color: #F01905;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

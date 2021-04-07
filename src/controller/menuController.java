@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -55,7 +56,7 @@ public class menuController {
 	}
 	
 	public String newPartie () {
-		
-		return "";
+		this.session.setAttribute("navire", new HashMap<>());
+		return "partie";
 	}
 }

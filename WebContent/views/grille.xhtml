@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+	<h:head>
+		<title>Battleship/grille</title>
+		<h:outputStylesheet library="css" name="grillestyle.css" />
+	</h:head>
+	<h:body>
+		<h:form>
+		<table border="1">
+			<tr>
+				<ui:repeat var="ligne" value="#{grille.lignes}" varStatus="status">
+					<tr>
+						<ui:repeat var="unecase" value="#{ligne}" varStatus="status">
+							<td><h:commandButton
+									style="background : #{grille.couleur(unecase)}"
+									value="#{unecase}" action="#{grille.tir (unecase)}"></h:commandButton></td>
+						</ui:repeat>
+					</tr>
+				</ui:repeat>
+			</tr>
+			<tr>
+				<td colspan="10"><h:commandButton style="width : 100%"
+						value="reset" action="#{grille.reset()}"></h:commandButton></td>
+			</tr>
+		</table>
+	</h:form>
+	</h:body>
+</f:view>
+
+</html>

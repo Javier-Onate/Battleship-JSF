@@ -23,7 +23,15 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/ancien-version/LibEnsembleNavire/LibEnsembleNavire/DataSerializer-jar-with-dependencies (1).jar"/>
-	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/ancien-version/LibEnsembleNavire/LibEnsembleNavire/EnsembleNavire-0.0.2.jar"/>
+	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/ancien-version/LibEnsembleNavire/LibEnsembleNavire/DataSerializer-jar-with-dependencies (1).jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/EnsembleNavire-0.0.4.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
