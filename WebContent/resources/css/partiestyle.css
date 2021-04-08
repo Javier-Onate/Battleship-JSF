@@ -19,6 +19,7 @@ body {
 	width: 600px;
 	height: 600px;
 	box-shadow: 3px 3px 3px black, 0px 0px 0px 10px white;
+	background-image: url("#{resource['images/ocean.jpeg']}");
 }
 
 
@@ -29,22 +30,37 @@ body {
 
 #porte-avion {
 	width: 300px;
+	background-image: url("#{resource['images/icon-porte-avion.png']}");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #croiseur {
 	width: 240px;
+	background-image: url("#{resource['images/icon-croiseur.png']}");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #torpilleur {
 	width: 180px;
+	background-image: url("#{resource['images/icon-torpilleur.png']}");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #sous-marin {
 	width: 180px;
+	background-image: url("#{resource['images/icon-sous-marin.png']}");
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 #contre-torpilleur {
 	width: 120px;
+	background-image: url("#{resource['images/icon-contre-torpilleur.png']}");
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .ui-panel-titlebar {

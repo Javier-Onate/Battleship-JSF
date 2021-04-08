@@ -46,13 +46,14 @@ public class menuController {
 //		}
 //	}	
 	
-	public void loadPartie (int id) {
+	public String loadPartie (int id) {
 		
 		Partie e = new Partie();
 		e.setId(id);
 		int index = p.indexOf(e);
 		session.setAttribute("partie", p.get(index));
 		System.out.println(p.get(index));
+		return "grille";
 	}
 	
 	public String newPartie () {

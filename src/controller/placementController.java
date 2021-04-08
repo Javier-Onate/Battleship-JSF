@@ -9,25 +9,23 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.DragDropEvent;
 
-import com.mezza.navire.Contre_Torpilleur;
-import com.mezza.navire.Croiseur;
 import com.mezza.navire.EnsembleNavire;
+import com.mezza.navire.InterfaceEnsembleNavire;
 import com.mezza.navire.Navire;
-import com.mezza.navire.Porte_Avion;
-import com.mezza.navire.Sous_Marin;
-import com.mezza.navire.Torpilleur;
 
+import model.Partie;
 import model.Point;
 import model.Utilisateur;
+import service.ServicePlacement;
+import service.ServicePlacementImpl;
 import service.ServiceUtilisateur;
-import service.ServiceUtilisateurImpl;
 import service.SessionUtils;
 
 @ManagedBean(name = "placementBean")
 public class placementController {
 
 	private Utilisateur u;
-	private ServiceUtilisateur s;
+	private ServicePlacement s;
 	private HttpSession session;
 	private String message;
 
@@ -38,24 +36,17 @@ public class placementController {
 	public void setU(Utilisateur u) {
 		this.u = u;
 	}
-
-	public void setS(ServiceUtilisateur s) {
-		this.s = s;
-	}
-
-	public ServiceUtilisateur getS() {
-		return s;
-	}
 	
 	public String getMessage() {
 		return this.message;
 	}
 
 	public placementController() {
-		this.u = new Utilisateur();
-		this.s = new ServiceUtilisateurImpl();
+		
+		this.s = new ServicePlacementImpl();
 
 		this.session = new SessionUtils().getSession();
+		this.u = (Utilisateur) this.session.getAttribute("user");
 	}
 
 	public void onDrop(DragDropEvent dragDropEvent) {
@@ -103,9 +94,9 @@ public class placementController {
 		
 	}
 
-	public void Grille() {
+	public String Grille() {
 		
-		EnsembleNavire en = new EnsembleNavire();
+		InterfaceEnsembleNavire en = new EnsembleNavire();
 		boolean success = true;
 		Navire n = null;
 		
@@ -117,44 +108,27 @@ public class placementController {
 			success = false;
 		}
 		else {
-			for(Entry<String, Point> p : navires.entrySet()) {
-							
-				switch (p.getValue().getNom()) {
-					case ("Porte_Avion"): {
-						n = new Porte_Avion(p.getValue().getX(), p.getValue().getY(), p.getValue().isOrientation(), 10);
-						break;
-					}
-					case ("Croiseur"): {
-						n = new Croiseur(p.getValue().getX(), p.getValue().getY(), p.getValue().isOrientation(), 10);
-						break;
-					}
-					case ("Sous_Marin"): {
-						n = new Sous_Marin(p.getValue().getX(), p.getValue().getY(), p.getValue().isOrientation(), 10);
-						break;
-					}
-					case ("Torpilleur"): {
-						n = new Torpilleur(p.getValue().getX(), p.getValue().getY(), p.getValue().isOrientation(), 10);
-						break;
-					}
-					case ("Contre_Torpilleur"): {
-						n = new Contre_Torpilleur(p.getValue().getX(), p.getValue().getY(), p.getValue().isOrientation(), 10);
-						break;
-					}
-				}
+			for(Entry<String, Point> p : navires.entrySet()) {							
 				
-				boolean result = en.add(n);
-				System.out.println(p.getValue().getX());
-				System.out.println(p.getValue().getY());
+				boolean result = en.add(p.getValue().getNom(), p.getValue().getX(), p.getValue().getY(), false);
+				
 				if(result == false) {
 					this.message = "Un ou plusieurs bateaux se chevauchent ! Attention, il doit y avoir une case d'écart entre les bateaux.";
 					success = false;
 					break;
-				}
-					
+				}					
 			}
 		}
 		if (success) {
 			this.message = "";
+			System.out.println(en.toString());
+						
+			Partie p = s.creerPartie(this.u);
+			en.SaveFiles("D:\\Javier\\FORMATION-JAVA\\eclipse-workspace\\battleshipjsf\\fichierClient", u.getEmail(), p.getId());
+			
+			this.session.setAttribute("currentgame", p);
+			return "grille";
 		}
+		return null;
 	}
 }
