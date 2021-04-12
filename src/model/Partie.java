@@ -11,7 +11,8 @@ public class Partie {
 	private int nombreCoup;	
 	private Timestamp creele;
 	private List<Utilisateur> utilisateurList;
-	
+	private String tirjoueur1;
+	private String tirjoueur2;
 	
 	public Partie() {
 		super();
@@ -23,6 +24,19 @@ public class Partie {
 		this.utilisateurList = utilisateurList;
 	}	
 	
+	
+	public String getTirjoueur1() {
+		return tirjoueur1;
+	}
+	public void setTirjoueur1(String tirjoueur1) {
+		this.tirjoueur1 = tirjoueur1;
+	}
+	public String getTirjoueur2() {
+		return tirjoueur2;
+	}
+	public void setTirjoueur2(String tirjoueur2) {
+		this.tirjoueur2 = tirjoueur2;
+	}
 	public int getId() {
 		return id;
 	}
@@ -46,11 +60,7 @@ public class Partie {
 	public void setTourJoueur(String tourJoueur) {
 		this.tourJoueur = tourJoueur;
 	}
-	@Override
-	public String toString() {
-		return "Partie [id=" + id + ", tourJoueur=" + tourJoueur + ", nombreCoup=" + nombreCoup + ", creele=" + creele
-				+ ", utilisateurList=" + utilisateurList + "]";
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,6 +81,11 @@ public class Partie {
 			return false;
 		return true;
 	}
-	
+	@Override
+	public String toString() {
+		return "Partie [id=" + id + ", tourJoueur=" + tourJoueur + ", nombreCoup=" + nombreCoup + ", creele=" + creele
+				+ ", utilisateurList=" + utilisateurList + ", tirjoueur1=" + tirjoueur1 + ", tirjoueur2=" + tirjoueur2
+				+ "]";
+	}
 	
 }

@@ -10,41 +10,26 @@ import com.sun.jersey.api.client.WebResource;
 
 import model.HistoriquePartie;
 import model.Partie;
+import model.Tir;
 import model.Utilisateur;
 
-public class ServiceMenuImpl implements ServiceMenu {
+public class ServiceGrilleImpl implements ServiceGrille {
 
-	private String message;
 	private Client client = null;
-	private Gson g = null ;
+	private Gson g = null;
 	private WebResource webResource = null;
-	
-	public ServiceMenuImpl() {
+
+	public ServiceGrilleImpl() {
 		client = Client.create();
 		g = new Gson();
 	}
 
-	public String getMessage() {
-		return null;
-	}
-	
-	public void setMessage(String message) {
-	}
-	
-	public List<Partie> getPartieByUser(Utilisateur u) {
-		
-		webResource = client.resource(URL  + "/partie/" + u.getId());
-		String jsonutilisateur = g.toJson(u);
-		ClientResponse response = webResource.type("application/json").get(ClientResponse.class);
-        if (response.getStatus() != 200) {
-            throw new RuntimeException("Failed : HTTP error code : "
-             + response.getStatus());
-         }
-         String jsonstring = response.getEntity(String.class);
-         // Convertir en collection         
-         List<Partie> p =g.fromJson(jsonstring, new TypeToken<List<Partie>>(){}.getType());
-		return p;
-		
+	public void setPartie(Partie p) {
+
+		webResource = client.resource(URL);
+		String jsonutilisateur = g.toJson(p);
+		ClientResponse response = webResource.type("application/json").put(ClientResponse.class, jsonutilisateur);
+
 	}
 	
 	public void setFinPartie(HistoriquePartie hp) {
@@ -58,4 +43,5 @@ public class ServiceMenuImpl implements ServiceMenu {
 		String jsonutilisateur = g.toJson(hp);
 		ClientResponse response = webResource.type("application/json").delete(ClientResponse.class, jsonutilisateur);
 	}
+
 }

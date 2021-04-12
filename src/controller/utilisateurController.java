@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-
+import java.io.File;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.HttpSession;
 
@@ -11,21 +11,21 @@ import service.ServiceUtilisateurImpl;
 import service.SessionUtils;
 
 // Ici nous avons le bean ou controller qui fera le lien avec le JSF pour la manipulation de l'utilisateur
-@ManagedBean (name="utilisateurBean")
+@ManagedBean(name = "utilisateurBean")
 public class utilisateurController {
 
 	private Utilisateur u;
 	private ServiceUtilisateur s;
 	private HttpSession session;
-	
+
 	public utilisateurController() {
 		this.u = new Utilisateur();
 		this.s = new ServiceUtilisateurImpl();
-		
+
 		this.session = new SessionUtils().getSession();
 		s.setMessage((String) session.getAttribute("messageErreurConnexion"));
 	}
-	
+
 	public Utilisateur getU() {
 		return u;
 	}
@@ -42,41 +42,47 @@ public class utilisateurController {
 		return s;
 	}
 
-	// On fait appel au login de l'implemantation service et on retourne le message d'erreur et/ou la page que l'on veut
-	// On stock aussi les données de la session dans le stockage coté client pour ne pas utiliser @SessionScope
+	// On fait appel au login de l'implemantation service et on retourne le message
+	// d'erreur et/ou la page que l'on veut
+	// On stock aussi les données de la session dans le stockage coté client pour ne
+	// pas utiliser @SessionScope
 	public String login() {
 		Utilisateur u1 = s.login(u);
-		
-		if(u1 == null) {
+
+		if (u1 == null) {
 			System.out.println(s.getMessage());
 			session.setAttribute("messageErreurConnexion", s.getMessage());
 
 			return "login";
-		}
-		else {
+		} else {
 			session.setAttribute("user", u1);
 			Utilisateur u2 = (Utilisateur) session.getAttribute("user");
 			session.setAttribute("messageErreurConnexion", "");
 
 			return "menuser";
-		}		
-	}	
-	
+		}
+	}
+
 	public String register() {
 		Utilisateur u1 = s.register(u);
-		
-		if(u1 == null) {
+
+		if (u1 == null) {
 			System.out.println(s.getMessage());
 			session.setAttribute("messageErreurConnexion", s.getMessage());
 
 			return "register";
-		}
-		else {
+		} else {
 			session.setAttribute("user", u1);
 			Utilisateur u2 = (Utilisateur) session.getAttribute("user");
 			session.setAttribute("messageErreurConnexion", "");
+			File file = new File("D:/Javier/FORMATION-JAVA/eclipse-workspace/battleshipjsf/fichierClient/" + u2.getEmail());
+			if (file.mkdir()) {
+				System.out.println("Ajout du dossier : " + file.getAbsolutePath());
+			} else {
+				System.out.println("Echec sur le dossier : " + file.getAbsolutePath());
+			}
 
-			return "menuser";
-		}		
-	}	
+			return "login";
+		}
+	}
 }

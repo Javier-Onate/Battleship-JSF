@@ -10,7 +10,7 @@
 
 	<h:head>
 		<title>Battleship/menuUser</title>
-		<h:outputStylesheet library="css" name="menuserstyle.css" />.
+		<h:outputStylesheet library="css" name="menuserstyle.css" />
 		<h:outputStylesheet library="css" name="primeflex.min.css" />
 	</h:head>
 
@@ -48,6 +48,9 @@
 									<p:commandButton rendered="#{menuserBean.u.email != d.tourJoueur}" disabled="true" ajax="false" styleClass="ui-button-secondary"
 									action="#{menuserBean.loadPartie(d.id)}"
 									value="Reprendre partie" />
+									<p:commandButton ajax="true" styleClass="ui-button-secondary"
+									value="Abandonner"
+									action="#{menuserBean.abandonPartie(myVarStatus.index)}" />
 							</h:form>
 						</f:facet>
 					</p:card>

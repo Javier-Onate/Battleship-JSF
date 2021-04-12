@@ -120,10 +120,10 @@ public class placementController {
 			}
 		}
 		if (success) {
-			this.message = "";
-			System.out.println(en.toString());
+			this.message = "";			
 						
 			Partie p = s.creerPartie(this.u);
+			System.out.println(p.toString());
 			en.SaveFiles("D:\\Javier\\FORMATION-JAVA\\eclipse-workspace\\battleshipjsf\\fichierClient", u.getEmail(), p.getId());
 			
 			this.session.setAttribute("currentgame", p);

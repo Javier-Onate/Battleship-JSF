@@ -28,7 +28,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/EnsembleNavire-0.0.4.jar">
+	<classpathentry kind="lib" path="D:/Javier/FORMATION-JAVA/PROJET/BN-JSF_JPA/EnsembleNavire-0.0.7.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

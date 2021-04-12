@@ -3,32 +3,45 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
 	<h:head>
 		<title>Battleship/grille</title>
 		<h:outputStylesheet library="css" name="grillestyle.css" />
+		<h:outputStylesheet library="css" name="primeflex.min.css" />
 	</h:head>
 	<h:body>
-		<h:form>
-			<div class="container">
-				<ui:repeat var="c" value="#{grilleBean.grillejoueur}"
-					varStatus="status">
-					 <h:commandButton styleClass="grillbutton" style="background-color:#{c.color};" value="#{c.value}" />
-				</ui:repeat>
-			</div>
-		</h:form>
-		<div></div>
-		<h:form>
-			<div class="container">
-				<ui:repeat var="c" value="#{grilleBean.grillejoueurAdverse}"
-					varStatus="status">
-					 <h:commandButton styleClass="grillbutton" style="background-color:#{c.color};" value="#{c.value}" action="#{grilleBean.tirer(c.x, c.y)}"/>
-				</ui:repeat>
-			</div>
-		</h:form>
-		
+		<div class="p-grid">
+			<div class="p-col-4"></div>
+			<h:form styleClass="p-col-4 p-d-flex p-jc-center">
+				<div class="container">
+					<ui:repeat var="c" value="#{grilleBean.grillejoueur}"
+						varStatus="status">
+						<h:commandButton styleClass="grillbutton"
+							style="background-color:#{c.color};" value="#{c.value}" />
+					</ui:repeat>
+				</div>
+			</h:form>
+			<div class="p-col-4"></div>
+			
+			<div class="p-col-4"></div>
+			<h:form styleClass="p-col-4 p-d-flex p-jc-center">
+				<div class="container">
+					<ui:repeat var="c" value="#{grilleBean.grillejoueurAdverse}"
+						varStatus="status">
+						<h:commandButton ajax="false" styleClass="grillbutton"
+							style="background-color:#{c.color};" value="#{c.value}"
+							action="#{grilleBean.tirer(c.x, c.y)}" />
+					</ui:repeat>
+				</div>
+				<h:commandButton ajax="false" styleClass=""
+							value="Abandonner"
+							action="#{grilleBean.abandonPartie}" />
+			</h:form>
+			<div class="p-col-4"></div>
+		</div>
 	</h:body>
 </f:view>
 
